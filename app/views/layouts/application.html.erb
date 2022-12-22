@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <p>
+      <%= link_to "Posts", admin_posts_path %>
+      <%= link_to "Users", admin_users_path %>
+      <%= link_to "Tags", admin_tags_path %>
+      <%= link_to "Comments", admin_comments_path %>
+      <% if logged_in? %>
+        <%= link_to "Logout", logout_path, method: :delete, style: "float: right" %>
+      <% else %>
+        <%= link_to "Login", new_admin_session_path, method: :get, style: "float: right"%>
+      <% end %>
+    </p>
+    <% if flash[:notice] %>
+      <div><%= flash[:notice] %></div>
+    <% elsif flash[:alert] %>
+      <div><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

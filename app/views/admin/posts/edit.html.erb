@@ -1,0 +1,18 @@
+<%= form_for ([:admin,@post]) do |f| %>
+<div>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+</div><br>
+<div>
+	<%= f.label :content %>
+	<%= f.text_field :content %>
+</div>
+<br>
+<div>
+	<%= label_tag "Tag Name" %>
+	<%= select_tag "people", options_from_collection_for_select(@tags, "id", "name"),:multiple => true %>
+</div><br>
+	<div>
+		<%= f.submit :update %>
+	</div>
+<% end %>

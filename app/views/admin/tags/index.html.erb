@@ -1,0 +1,27 @@
+<h1>All tags</h1>
+
+<table id="customers">
+  <tr>
+    <th>Tag Name</th>
+    <th>Created at</th>
+    <th>Staus</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+
+	<% @tags.each do |tag| %>
+    <td><%= tag.name %></td>
+    <td><%= time_ago tag.created_at %></td>
+    <td><%= status_converter tag.in_use?, truthy: "In Use" , falsey: "not in use" %></td>
+    <td><%= link_to "Edit" , edit_admin_tag_path(tag) %>
+      <% unless tag.in_use? %>
+      	<%= link_to "Delete", admin_tag_path(tag), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %>
+      <%end%>
+    </td>
+  </tr>
+	<% end %>
+</table>
+

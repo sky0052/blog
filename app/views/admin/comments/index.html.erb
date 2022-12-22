@@ -1,0 +1,7 @@
+<% @comments.each do |c| %>
+	Commenter:<strong><%= c.fullname %></strong> <strong>||</strong> 
+	<strong> Email: </strong><em> <%= c.email %></em>
+	<strong>|| Comment:</strong><%= c.message %>
+	<strong>  ||  Status:<%= c.status %></strong>
+	<hr>
+<% end %>

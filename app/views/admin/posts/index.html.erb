@@ -1,0 +1,22 @@
+<h1>All Posts Here</h1>
+<%= link_to "New Post", new_admin_post_path %>
+<table id="customers">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Created at</th>
+    <th>Published</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+<% @posts.each do |post| %>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= time_ago(post.created_at) %></td>
+    <td><%= status_converter post.is_publish, truthy: "Yeppp", falsey: "No" %></td>
+    <td><%= link_to "Edit", edit_admin_post_path(post) %>
+      <%= link_to "Show", admin_post_path(post) %>
+    </td>
+  </tr>
+<% end %>
+</table>
