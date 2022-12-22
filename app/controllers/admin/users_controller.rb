@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+
+  skip_before_action :authorized, :only => [:new ,:create]
+
   def index
     @users = User.all
   end
@@ -9,6 +12,20 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])    
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create(user_params)
+      if @user.save
+        redirect_to login_path
+        flash[:notice] = "User is Successfully Created"
+      else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   def update
