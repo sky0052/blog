@@ -35,6 +35,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  config.hosts << "sky0052-expert-bassoon-56g7rvjgqgjfp444-3000.preview.app.github.dev"
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
