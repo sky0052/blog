@@ -41,7 +41,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
